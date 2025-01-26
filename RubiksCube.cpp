@@ -149,27 +149,27 @@ RubiksCube &RubiksCube::invert(MOVE ind) {
 
 void RubiksCube::print() const {
     cout<<"RubiksCube - \n\n";
-    for (int row=0; row<2; row++) {
-        for (unsigned i=0; i<7; i++) cout<<" ";
-        for (int col = 0; col < 2; col++) {
+    for (int row=0; row<3; row++) {
+        for (unsigned i=0; i<6; i++) cout<<" ";
+        for (int col = 0; col < 3; col++) {
             cout<<getColorLetter(getColor(FACE::UP,row,col)) << " ";
         }
         cout<<"\n";
     }
     cout<<"\n";
-    for (int row=0; row<2; row++) {
-        for (int col=0; col < 2; col++) {
+    for (int row=0; row<3; row++) {
+        for (int col=0; col < 3; col++) {
             cout<<getColorLetter(getColor(FACE::LEFT,row,col)) << " ";
         }
-        for (int col=0; col < 2; col++) {
+        for (int col=0; col < 3; col++) {
             cout<<getColorLetter(getColor(FACE::FRONT,row,col)) << " ";
         }
-        for (int col=0; col < 2; col++) {
+        for (int col=0; col < 3; col++) {
 
             cout<<getColorLetter(getColor(FACE::RIGHT,row,col)) << " ";
 
         }
-        for (int col=0; col < 2; col++) {
+        for (int col=2; col >= 0; col--) {
 
             cout<<getColorLetter(getColor(FACE::BACK,row,col)) << " ";
 
@@ -177,9 +177,9 @@ void RubiksCube::print() const {
         cout<<"\n";
     }
     cout<<"\n";
-    for (int row=0; row<2; row++) {
-        for (unsigned i=0; i<7; i++) cout<<" ";
-        for (int col = 0; col < 2; col++) {
+    for (int row=0; row<3; row++) {
+        for (unsigned i=0; i<6; i++) cout<<" ";
+        for (int col = 0; col < 3; col++) {
             cout<<getColorLetter(getColor(FACE::DOWN,row,col)) << " ";
         }
         cout<<"\n";
@@ -189,7 +189,7 @@ void RubiksCube::print() const {
 
 vector<RubiksCube::MOVE> RubiksCube::randomShuffleCube(unsigned int times) {
     vector<MOVE> moves_done;
-    srand(times(0));
+    srand(time(0));
     for (unsigned int i=0; i<times; i++) {
         unsigned int select = rand() % 18;        // as there are 18 unique moves
         moves_done.push_back(static_cast<MOVE>(select));
